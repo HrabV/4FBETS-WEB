@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "797VDH8FIvAHN4Gjc41dMnPE3mtBYeSWJkN0iZPRPhU=",
+  "Source": "backend",
+  "BasePath": "_content/backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "backend\\wwwroot",
+      "Source": "backend",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\needs-you.png",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "needs-you.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\needs-you.png"
+    }
+  ]
+}
