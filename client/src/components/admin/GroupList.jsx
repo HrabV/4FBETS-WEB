@@ -54,7 +54,7 @@ export const GroupList = () => {
               <h1>20/05/2022</h1>
             </Td>
             <Td>
-              <h1>22/07/2022</h1>
+              <h1></h1>
             </Td>
             <Td>
               <Button>Show fans</Button>

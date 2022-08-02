@@ -11,6 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { NewsEdit } from "./NewsEdit";
 
 export const NewsList = () => {
   return (
@@ -37,7 +38,7 @@ export const NewsList = () => {
               <Text>25.02.2022</Text>
             </Td>
             <Td>
-              <Button>Edit</Button>
+              <NewsEdit></NewsEdit>
             </Td>
             <Td>
               <Button>Delete</Button>

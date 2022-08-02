@@ -54,7 +54,7 @@ export const NewsItem = () => {
             </Box>
           </GridItem>
         </Grid>
-        <LinkOverlay href="#"></LinkOverlay>
+        <LinkOverlay href="/news/:newsId"></LinkOverlay>
       </LinkBox>
     </Box>
   );

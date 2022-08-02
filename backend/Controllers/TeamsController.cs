@@ -30,27 +30,27 @@ public class TeamsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Team>> GetTeam(Guid id)
     {
-        var footballTeam = await _context.Teams.FindAsync(id);
+        var team = await _context.Teams.FindAsync(id);
 
-        if (footballTeam == null)
+        if (team == null)
         {
             return NotFound();
         }
 
-        return footballTeam;
+        return team;
     }
 
-    // PUT: api/FootballTeams/5
+    // PUT: api/Teams/5
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutFootballTeam(Guid id, Team footballTeam)
+    public async Task<IActionResult> PutTeam(Guid id, Team team)
     {
-        if (id != footballTeam.Id)
+        if (id != team.Id)
         {
             return BadRequest();
         }
 
-        _context.Entry(footballTeam).State = EntityState.Modified;
+        _context.Entry(team).State = EntityState.Modified;
 
         try
         {
@@ -71,14 +71,14 @@ public class TeamsController : ControllerBase
         return NoContent();
     }
 
-    // POST: api/FootballTeams
+    // POST: api/Teams
     [HttpPost]
-    public async Task<ActionResult<Team>> PostFootballTeam(Team footballTeam)
+    public async Task<ActionResult<Team>> PostTeam(Team team)
     {
-        _context.Teams.Add(footballTeam);
+        _context.Teams.Add(team);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetTeam", new { id = footballTeam.Id }, footballTeam);
+        return CreatedAtAction("GetTeam", new { id = team.Id }, team);
     }
 
     // DELETE: api/Teams/5
@@ -106,25 +106,19 @@ public class TeamsController : ControllerBase
     [HttpPost]
     public async Task<string> Upload()
     {
-        try
+
+        var httpRequest = Request.Form;
+        var postedFile = httpRequest.Files[0];
+        string filename = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
+        filename = filename + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ssff") + Path.GetExtension(postedFile.FileName);
+        var imagePath = _env.ContentRootPath + "/images/" + filename;
+
+        using (var stream = new FileStream(imagePath, FileMode.Create))
         {
-            var httpRequest = Request.Form;
-            var postedFile = httpRequest.Files[0];
-            string filename = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
-            filename = filename + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ssff") + Path.GetExtension(postedFile.FileName);
-            var imagePath = _env.ContentRootPath + "/Image/" + filename;
-
-            using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
-                await postedFile.CopyToAsync(stream);
-            }
-
-            return filename;
+            await postedFile.CopyToAsync(stream);
         }
-        catch (Exception)
-        {
 
-            return "anonymous.png";
-        }
+        return filename;
+
     }
 }

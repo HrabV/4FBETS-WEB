@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Grid,
@@ -23,57 +23,9 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewNews } from "../../reducers/newsSlice";
-import axios from "axios";
-import * as FormData from "form-data";
-
-export const NewsAdd = () => {
+export const NewsEdit = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [newsId, setNewsId] = useState("");
-  const [imageUrl, setImageUrl] = useState(null);
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
-  const dispatch = useDispatch();
-
-  const onTitleChanged = (e) => setTitle(e.target.value);
-  const onBodyChanged = (e) => setBody(e.target.value);
-  const onImageUrlChanged = (e) => setImageUrl(e.target.files[0].name);
-  const canSave = [title, body].every(Boolean) && addRequestStatus === "idle";
-
-  const onSaveNews = async () => {
-    console.log({ title, body, imageUrl, newsId });
-    if (canSave) {
-      try {
-        setAddRequestStatus("pending");
-        await dispatch(addNewNews({ title, body, imageUrl, newsId })).unwrap();
-        setTitle("");
-        setBody("");
-        setNewsId("");
-        setImageUrl(null);
-      } catch (err) {
-        console.error("Failed to save the post: ", err);
-      } finally {
-        setAddRequestStatus("idle");
-      }
-    }
-  };
-
-  const Upload = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("imageUrl", imageUrl);
-    const response = await axios
-      .post("https://localhost:7072/api/news/uploadimage", formData, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
 
   return (
     <>
@@ -132,56 +84,32 @@ export const NewsAdd = () => {
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
         <ModalContent rounded={0} bgColor={"rgba(255, 255, 255, 0.75)"}>
-          <ModalHeader>Add new Post</ModalHeader>
+          <ModalHeader>Edit Post</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Post header</FormLabel>
-              <Input
-                type={"text"}
-                ref={initialRef}
-                name="title"
-                id="title"
-                value={title}
-                onChange={onTitleChanged}
-              />
+              <Textarea ref={initialRef} />
             </FormControl>
             <FormControl mt={2}>
               <FormLabel>Post text</FormLabel>
-              <Textarea
-                resize={"none"}
-                id="newsBody"
-                name="newsBody"
-                value={body}
-                onChange={onBodyChanged}
-              />
+              <Textarea resize={"vertical"} />
             </FormControl>
 
-            <FormControl mt={4} onSubmit={Upload}>
+            <FormControl mt={4}>
               <FormLabel>Post Image</FormLabel>
-              <input
-                my={"2"}
+              <Input
                 px={"1"}
-                type={"file"}
                 variant="unstyled"
+                type={"file"}
                 accept="image/*"
-                id="imageUrl"
-                name="imageUrl"
-                onChange={onImageUrlChanged}
               />
-              <Button type={"submit"}>Upload</Button>
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              type={"submit"}
-              onClick={onSaveNews}
-              disabled={!canSave}
-              colorScheme="blue"
-              mr={3}
-            >
-              Save
+            <Button colorScheme="blue" mr={3}>
+              Save changes
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>

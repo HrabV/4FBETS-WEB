@@ -88,8 +88,9 @@ export const Nav = () => {
               >
                 <Avatar
                   size={"md"}
+                  id="avatar"
                   src={
-                    "https://myloview.com/sticker-laptop-user-icon-one-of-set-web-icons-no-D8BDD3A"
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdGkaCb5JqWo6oMYOof4L1u7gcfAEMpJU42fimt5PFdzYMZfU6CZSSvhAzkU0NRL_YZVI&usqp=CAU"
                   }
                 />
               </MenuButton>

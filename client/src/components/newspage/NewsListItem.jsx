@@ -19,10 +19,14 @@ export const NewsListItem = () => {
     return item;
   });
   return (
-    <Stack>
-      <HStack>
-        <Box>{elements}</Box>
-      </HStack>
-    </Stack>
+    <>
+      <Box>
+        <Stack direction={{ base: "column", lg: "row" }}>
+          <NewsItem />
+          <NewsItem />
+          <NewsItem />
+        </Stack>
+      </Box>
+    </>
   );
 };

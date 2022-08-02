@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "797VDH8FIvAHN4Gjc41dMnPE3mtBYeSWJkN0iZPRPhU=",
+  "Hash": "eAGKOXr1DtZXZzKspbw1S/VjIeVEKiP6IK9a57FugOE=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\needs-you.png",
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\anonymous.jpg",
       "SourceId": "backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
       "BasePath": "_content/backend",
-      "RelativePath": "needs-you.png",
+      "RelativePath": "images/anonymous.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,7 +31,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\needs-you.png"
+      "OriginalItemSpec": "wwwroot\\images\\anonymous.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\needs-you.png",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/needs-you.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\needs-you.png"
     }
   ]
 }

@@ -22,6 +22,7 @@ export default function App() {
           <Route path={"/registration"} element={<RegistrationPage />} />
           <Route path={"/admin"} element={<AdminPage />} />
           <Route path={"/news"} element={<NewsPage />} />
+          <Route path={"/news/:newsId"} element={<NewsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

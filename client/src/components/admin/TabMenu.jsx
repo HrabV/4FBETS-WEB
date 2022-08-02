@@ -38,38 +38,37 @@ export const TabMenu = () => {
             fontSize={"md"}
             _selected={{ color: "white", bg: "blackAlpha.300" }}
           >
-            <NavLink to={"/admin"}> Create</NavLink>
-          </Tab>
-          <Tab
-            fontSize={"md"}
-            _selected={{ color: "white", bg: "blackAlpha.300" }}
-            _activeLink={"/admin/news"}
-          >
-            <NavLink to={"/admin/news"}>News</NavLink>
+            Create
           </Tab>
           <Tab
             fontSize={"md"}
             _selected={{ color: "white", bg: "blackAlpha.300" }}
           >
-            <NavLink to={"/admin/users"}>User</NavLink>
+            News
           </Tab>
           <Tab
             fontSize={"md"}
             _selected={{ color: "white", bg: "blackAlpha.300" }}
           >
-            <NavLink to={"/admin/matches"}>Match</NavLink>
+            User
           </Tab>
           <Tab
             fontSize={"md"}
             _selected={{ color: "white", bg: "blackAlpha.300" }}
           >
-            <Link to={"/admin/teams"}>Team</Link>
+            Match
           </Tab>
           <Tab
             fontSize={"md"}
             _selected={{ color: "white", bg: "blackAlpha.300" }}
           >
-            <NavLink to={"/admin/groups"}>Group</NavLink>
+            Team
+          </Tab>
+          <Tab
+            fontSize={"md"}
+            _selected={{ color: "white", bg: "blackAlpha.300" }}
+          >
+            Group
           </Tab>
         </TabList>
         <TabPanels
