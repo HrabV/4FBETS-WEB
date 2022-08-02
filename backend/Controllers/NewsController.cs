@@ -101,7 +101,7 @@ public class NewsController : ControllerBase
         return _context.News.Any(e => e.Id == id);
     }
 
-    [Route("UploadImage")]
+    [Route("upload")]
     [HttpPost]
 
     /* public ActionResult Upload(IFormFile imageUrl)
@@ -118,14 +118,15 @@ public class NewsController : ControllerBase
          );
      }*/
 
-    public ActionResult Upload([FromForm] IFormFile imageUrl)
+    public ActionResult Upload(IFormFile image)
     {
         try
         {
-            string path = Path.Combine(_env.ContentRootPath, "/images/", imageUrl.FileName);
+            string ext = Path.GetExtension(image.FileName);
+            string path = Path.Combine(_env.WebRootPath, "images/", $"{Guid.NewGuid().ToString()}{ext}");
             using (Stream stream = new FileStream(path, FileMode.Create))
             {
-                imageUrl.CopyTo(stream);
+                image.CopyTo(stream);
             }
             return StatusCode(StatusCodes.Status201Created);
         }

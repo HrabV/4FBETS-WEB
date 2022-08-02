@@ -34,41 +34,45 @@ export const NewsAdd = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [newsId, setNewsId] = useState("");
-  const [imageUrl, setImageUrl] = useState(null);
+  const [image, setImage] = useState(null);
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
   const dispatch = useDispatch();
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onBodyChanged = (e) => setBody(e.target.value);
-  const onImageUrlChanged = (e) => setImageUrl(e.target.files[0].name);
+  const onImageChanged = (e) => setImage(e.target.files[0]);
   const canSave = [title, body].every(Boolean) && addRequestStatus === "idle";
 
   const onSaveNews = async () => {
-    console.log({ title, body, imageUrl, newsId });
+    console.log({ title, body, image, newsId });
     if (canSave) {
-      try {
-        setAddRequestStatus("pending");
-        await dispatch(addNewNews({ title, body, imageUrl, newsId })).unwrap();
-        setTitle("");
-        setBody("");
-        setNewsId("");
-        setImageUrl(null);
-      } catch (err) {
-        console.error("Failed to save the post: ", err);
-      } finally {
-        setAddRequestStatus("idle");
+      if (image) {
+        Upload();
+      }
+      {
+        try {
+          setAddRequestStatus("pending");
+          await dispatch(
+            addNewNews({ title, body, imageUrl: image.name, newsId })
+          ).unwrap();
+          setTitle("");
+          setBody("");
+          setNewsId("");
+          setImage(null);
+        } catch (err) {
+          console.error("Failed to save the post: ", err);
+        } finally {
+          setAddRequestStatus("idle");
+        }
       }
     }
   };
 
-  const Upload = async (event) => {
-    event.preventDefault();
+  const Upload = async () => {
     const formData = new FormData();
-    formData.append("imageUrl", imageUrl);
-    const response = await axios
-      .post("https://localhost:7072/api/news/uploadimage", formData, {
-        headers: { "Content-Type": "application/json" },
-      })
+    formData.append("image", image);
+    await axios
+      .post("https://localhost:7072/api/news/upload", formData)
       .then((res) => {
         console.log(res.data);
       })
@@ -157,7 +161,7 @@ export const NewsAdd = () => {
               />
             </FormControl>
 
-            <FormControl mt={4} onSubmit={Upload}>
+            <FormControl mt={4}>
               <FormLabel>Post Image</FormLabel>
               <input
                 my={"2"}
@@ -167,7 +171,7 @@ export const NewsAdd = () => {
                 accept="image/*"
                 id="imageUrl"
                 name="imageUrl"
-                onChange={onImageUrlChanged}
+                onChange={onImageChanged}
               />
               <Button type={"submit"}>Upload</Button>
             </FormControl>

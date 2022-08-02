@@ -53,12 +53,14 @@ app.UseCors(builder =>
 });
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(new StaticFileOptions
+/*app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
            Path.Combine(builder.Environment.ContentRootPath, "images")),
     RequestPath = "/images"
-});
+});*/
+
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
