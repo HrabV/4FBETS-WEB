@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rmzpoW9Dqd1eJoRJBi/frBki4CAn3HS0D5D47jJLy5I=",
+  "Hash": "3kpS3UGc0KYglh8AzU5FvnXKDVtQ60AvXXbyGWJMhD0=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
@@ -85,6 +85,23 @@
       "OriginalItemSpec": "wwwroot\\images\\anonymous.jpg"
     },
     {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\Logo2.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/Logo2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Logo2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\needs-you.png",
       "SourceId": "backend",
       "SourceType": "Discovered",
@@ -100,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\needs-you.png"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\orig_591145.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/orig_591145.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\orig_591145.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\orig_591167.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/orig_591167.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\orig_591167.jpg"
     }
   ]
 }
