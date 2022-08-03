@@ -102,29 +102,24 @@ public class UsersController : ControllerBase
         return _context.Users.Any(e => e.Id == id);
     }
 
-    [Route("UploadImage")]
-    [HttpPost]
-    public async Task<string> Upload()
+    public ActionResult Upload(IFormFile image)
     {
         try
         {
-            var httpRequest = Request.Form;
-            var postedFile = httpRequest.Files[0];
-            string filename = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
-            filename = filename + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ssff") + Path.GetExtension(postedFile.FileName);
-            var imagePath = _env.ContentRootPath + "/Image/" + filename;
-
-            using (var stream = new FileStream(imagePath, FileMode.Create))
+            string ext = Path.GetExtension(image.FileName);
+            string path = Path.Combine(_env.WebRootPath, "images/", $"{Guid.NewGuid().ToString()}{ext}");
+            using (Stream stream = new FileStream(path, FileMode.Create))
             {
-                await postedFile.CopyToAsync(stream);
+                image.CopyTo(stream);
             }
-
-            return filename;
+            return StatusCode(StatusCodes.Status201Created);
         }
         catch (Exception)
         {
-
-            return "anonymous.png";
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
+
+
+
     }
 }

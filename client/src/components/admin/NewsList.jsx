@@ -9,11 +9,63 @@ import {
   Tr,
   Button,
   Text,
+  Image,
 } from "@chakra-ui/react";
-import React from "react";
+
 import { NewsEdit } from "./NewsEdit";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchNews, selectAllNews } from "../../reducers/newsSlice";
+const imagePath = "https://localhost:7072/images/";
+
+const NewsOption = ({ news }) => {
+  return (
+    <Tr key={news.id}>
+      <Td>
+        <Box>
+          <img alt=" " src={imagePath + news.imageUrl}></img>
+        </Box>
+      </Td>
+      <Td>
+        <Text>{news.title}</Text>
+      </Td>
+      <Td>
+        <Text>25.02.2022</Text>
+      </Td>
+      <Td>
+        <NewsEdit></NewsEdit>
+      </Td>
+      <Td>
+        <Button>Delete</Button>
+      </Td>
+    </Tr>
+  );
+};
 
 export const NewsList = () => {
+  const dispatch = useDispatch();
+  const news = useSelector(selectAllNews);
+
+  const newsStatus = useSelector((state) => state.news.status);
+
+  useEffect(() => {
+    if (newsStatus === "idle") {
+      dispatch(fetchNews());
+    }
+  }, [newsStatus, dispatch]);
+
+  let content;
+
+  if (newsStatus === "succeeded") {
+    const orderedNews = news
+      .slice()
+      .sort((a, b) => b.title.localeCompare(a.title));
+
+    content = orderedNews.map((news) => (
+      <NewsOption key={news.id} news={news} />
+    ));
+  }
   return (
     <TableContainer>
       <Table>
@@ -26,25 +78,7 @@ export const NewsList = () => {
             <Th>Delet</Th>
           </Tr>
         </Thead>
-        <Tbody>
-          <Tr>
-            <Td>
-              <Box width={"150px"} height={"50px"}></Box>
-            </Td>
-            <Td>
-              <Text>Vorskla</Text>
-            </Td>
-            <Td>
-              <Text>25.02.2022</Text>
-            </Td>
-            <Td>
-              <NewsEdit></NewsEdit>
-            </Td>
-            <Td>
-              <Button>Delete</Button>
-            </Td>
-          </Tr>
-        </Tbody>
+        <Tbody>{content}</Tbody>
       </Table>
     </TableContainer>
   );

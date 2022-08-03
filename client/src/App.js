@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GroupList } from "./components/admin/GroupList.jsx";
+import { NewsEdit } from "./components/admin/NewsEdit.jsx";
 import { TeamList } from "./components/admin/TeamList.jsx";
 import { UserList } from "./components/admin/UserList.jsx";
 import {
@@ -22,7 +23,6 @@ export default function App() {
           <Route path={"/registration"} element={<RegistrationPage />} />
           <Route path={"/admin"} element={<AdminPage />} />
           <Route path={"/news"} element={<NewsPage />} />
-          <Route path={"/news/:newsId"} element={<NewsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

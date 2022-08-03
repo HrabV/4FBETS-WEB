@@ -1,6 +1,6 @@
 import { Box, Heading, Stack } from "@chakra-ui/react"
 
-export const NewsConent = () =>{
+export const NewsContent = () =>{
 
 
     return (
