@@ -102,23 +102,27 @@ public class TeamsController : ControllerBase
         return _context.Teams.Any(e => e.Id == id);
     }
 
-    [Route("UploadImage")]
+    [Route("upload")]
     [HttpPost]
-    public async Task<string> Upload()
+
+    public ActionResult Upload(IFormFile image)
     {
-
-        var httpRequest = Request.Form;
-        var postedFile = httpRequest.Files[0];
-        string filename = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
-        filename = filename + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ssff") + Path.GetExtension(postedFile.FileName);
-        var imagePath = _env.ContentRootPath + "/images/" + filename;
-
-        using (var stream = new FileStream(imagePath, FileMode.Create))
+        try
         {
-            await postedFile.CopyToAsync(stream);
+            string filename = image.FileName;
+            string path = Path.Combine(_env.WebRootPath, "images/", filename);
+            using (Stream stream = new FileStream(path, FileMode.Create))
+            {
+                image.CopyTo(stream);
+            }
+            return (StatusCode(StatusCodes.Status201Created));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
-        return filename;
+
 
     }
 }

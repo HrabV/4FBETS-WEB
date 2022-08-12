@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
   Grid,
@@ -25,23 +25,32 @@ import {
 } from "@chakra-ui/react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import { newsUpdated, selectNewsById } from "../../reducers/newsSlice";
+import { fetchNewsById } from "../../reducers/newsSlice";
 
-export const NewsEdit = ({ match }) => {
+export const NewsEdit = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
-  /*const { newsId } = match.params;
-  console.log(newsId);
+  //const news = useSelector((state) => selectNewsById(state, newsId));
+  const dispatch = useDispatch();
+  const { newsId } = useParams();
+  const { state } = useLocation();
+  const [news, setNews] = useState({ ...state?.news });
 
-  const news = useSelector((state) => selectNewsById(state, newsId));
+  useEffect(() => {
+    if (!state) {
+      dispatch(fetchNewsById(newsId)).then((response) => {
+        setNews(response.payload);
+      });
+    }
+  }, [newsId, state]);
 
   const [title, setTitle] = useState(news.title);
   const [body, setBody] = useState(news.body);
   const [image, setImage] = useState(news.image);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onTitleChanged = (e) => setTitle(e.target.value);
@@ -50,16 +59,13 @@ export const NewsEdit = ({ match }) => {
 
   const onSaveNews = () => {
     if (title && body) {
-      dispatch(newsUpdated({ id: newsId, title, body, image }));
-      // navigate(`/news/${newsId}`);
+      dispatch(newsUpdated({ id: newsId, title, body }));
+      navigate("/dmin");
     }
-  };*/
+  };
 
   return (
     <>
-      <Button w={"70%"} h={"full"} onClick={onOpen} p={2} fontSize={15}>
-        Edit
-      </Button>
       <Modal
         closeOnOverlayClick={false}
         initialFocusRef={initialRef}

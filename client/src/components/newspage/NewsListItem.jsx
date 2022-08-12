@@ -22,8 +22,13 @@ import {
 import { NewsItem } from "./NewsItem";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchNews, selectAllNews } from "../../reducers/newsSlice";
+import { Link, Router, useNavigate } from "react-router-dom";
+import {
+  fetchNews,
+  fetchNewsById,
+  selectAllNews,
+} from "../../reducers/newsSlice";
+import { Button } from "reactstrap";
 const imagePath = "https://localhost:7072/images/";
 
 const NewsOption = ({ news }) => {
@@ -62,7 +67,8 @@ const NewsOption = ({ news }) => {
           </Box>
         </GridItem>
       </Grid>
-      <LinkOverlay href="/news/:newsId"></LinkOverlay>
+
+      <LinkOverlay href={`/news/${news.id}`} state={news} />
     </LinkBox>
   );
 };

@@ -102,12 +102,15 @@ public class UsersController : ControllerBase
         return _context.Users.Any(e => e.Id == id);
     }
 
+    [Route("upload")]
+    [HttpPost]
+
     public ActionResult Upload(IFormFile image)
     {
         try
         {
-            string ext = Path.GetExtension(image.FileName);
-            string path = Path.Combine(_env.WebRootPath, "images/", $"{Guid.NewGuid().ToString()}{ext}");
+            string filename = image.FileName;
+            string path = Path.Combine(_env.WebRootPath, "images/", filename);
             using (Stream stream = new FileStream(path, FileMode.Create))
             {
                 image.CopyTo(stream);

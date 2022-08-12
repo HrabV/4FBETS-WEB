@@ -104,20 +104,6 @@ public class NewsController : ControllerBase
     [Route("upload")]
     [HttpPost]
 
-    /* public ActionResult Upload(IFormFile imageUrl)
-     {
-
-         return Ok(new
-         {
-             contentType = imageUrl.ContentType,
-             fileName = imageUrl.FileName,
-
-
-         }
-
-         );
-     }*/
-
     public ActionResult Upload(IFormFile image)
     {
         try

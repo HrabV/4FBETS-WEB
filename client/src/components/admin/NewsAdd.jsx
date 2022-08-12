@@ -35,6 +35,7 @@ export const NewsAdd = () => {
   const [body, setBody] = useState("");
   const [newsId, setNewsId] = useState("");
   const [image, setImage] = useState(null);
+  const [createdAt, setcreatedAt] = useState();
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
   const dispatch = useDispatch();
 
@@ -68,7 +69,8 @@ export const NewsAdd = () => {
     }
   };
 
-  const Upload = async () => {
+  const Upload = async (e) => {
+    const image = e.target.files[0].name;
     const formData = new FormData();
     formData.append("image", image);
     await axios

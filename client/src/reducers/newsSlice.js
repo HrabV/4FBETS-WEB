@@ -22,6 +22,21 @@ export const fetchNews = createAsyncThunk("fetch/fetchNews", async () => {
   }
 });
 
+export const fetchNewsById = createAsyncThunk(
+  "fetch/fetchNewsById",
+  async (newsId) => {
+    try {
+      console.log("test");
+      const response = await axios.get(
+        `https://localhost:7072/api/news/${newsId}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const addNewNews = createAsyncThunk("post/addNewNews", async (state) => {
   try {
     const response = await axios.post("https://localhost:7072/api/news", {
@@ -61,6 +76,9 @@ const newsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      .addCase(fetchNewsById.fulfilled, (state, action) => {
+        state.news.push(action.payload);
+      })
       .addCase(addNewNews.fulfilled, (state, action) => {
         state.news.push(action.payload);
       });
@@ -72,5 +90,6 @@ export default newsSlice.reducer;
 
 export const selectAllNews = (state) => state.news.news;
 
-export const selectNewsById = (state, newsId) =>
-  state.news.news.find((news) => news.id === newsId);
+export const selectNewsById = (state, newsId) => {
+  return state.news.news.finde((news) => news.id === newsId);
+};

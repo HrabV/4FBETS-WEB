@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3kpS3UGc0KYglh8AzU5FvnXKDVtQ60AvXXbyGWJMhD0=",
+  "Hash": "45D8ImvBX3Ni2LXOvsfyYltJXIIYJM1Zch+Mp4VX+bw=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
@@ -151,6 +151,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\orig_591167.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\orig_591172.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/orig_591172.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\orig_591172.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\orig_591175.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/orig_591175.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\orig_591175.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\images\\orig_591183.jpg",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basil\\Documents\\MyProject\\4FBETS\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "images/orig_591183.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\orig_591183.jpg"
     }
   ]
 }

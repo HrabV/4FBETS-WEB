@@ -10,6 +10,7 @@ import {
   Button,
   Text,
   Image,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { NewsEdit } from "./NewsEdit";
@@ -20,6 +21,7 @@ import { fetchNews, selectAllNews } from "../../reducers/newsSlice";
 const imagePath = "https://localhost:7072/images/";
 
 const NewsOption = ({ news }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Tr key={news.id}>
       <Td>
@@ -28,13 +30,19 @@ const NewsOption = ({ news }) => {
         </Box>
       </Td>
       <Td>
-        <Text>{news.title}</Text>
+        <Text>
+          {news.title.length > 50
+            ? news.title.substring(0, 50).concat("...")
+            : news.title}
+        </Text>
       </Td>
       <Td>
         <Text>25.02.2022</Text>
       </Td>
       <Td>
-        <NewsEdit></NewsEdit>
+        <Button onClick={onOpen}>
+          <Link to={`/admin/editnews/${news.id}`}>Edit</Link>
+        </Button>
       </Td>
       <Td>
         <Button>Delete</Button>
